@@ -6,42 +6,45 @@
         background-color: #dddddd;
     }
 
-    .title>.center {
+    .ordinary {
+        background-color: #eeeeff;
+    }
+
+    .center {
         text-align: center;
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<meta charset="UTF-8">
-<h2 style="text-align: center;">Works log</h2>
-{% for job in jobs %}
-<h3>Action # {{ job.id }}</h3>
-<div class="table_container">
-    <table class="my_table">
-        <tr class="my_row">
-            <td class="title" style="width: 400px; ">Title of activity</td>
-            <td class="title" style="width: 150px; ">Team leader</td>
-            <td class="title center" style="width: 100px">Duration</td>
-            <td class="title center" style="width: 200px">List of collaborators</td>
-            <td class="title center" style="width: 100px">Is finished</td>
-        </tr>
-        <tr class="my_row">
-            <td class="ordinary" style="background-color: #eeeeff;">{{ job.job.capitalize() }}</td>
-            <td class="ordinary" style="background-color: #eeeeff;">{{ names[job.team_leader][0] }} {{
-                names[job.team_leader][1] }}</td>
-            <td class="ordinary" style="background-color: #eeeeff; text-align: center;">{{ job.work_size }} hours</td>
-            <td class="ordinary" style="background-color: #eeeeff; text-align: center;">{{ job.collaborators }}</td>
-            {% if job.is_finished %}
-            <td class="ordinary" style="background-color: #eeffee; text-align: center;">Finished</td>
-            {% else %}
-            <td class="ordinary" style="background-color: #ffeeff; text-align: center;">Is not finished</td>
-            {% endif %}
-        </tr>
+<div style="width: fit-content; margin: 0 auto;">
+    <h2 style="text-align: center;">Список работ</h2>
+    {% for job in jobs %}
+    <h3>Задача # {{ job.id }}</h3>
+    <div class="table_container">
+        <table class="my_table">
+            <tr class="my_row">
+                <td class="title" style="width: 400px; ">Название</td>
+                <td class="title" style="width: 150px; ">Главный</td>
+                <td class="title center" style="width: 100px">Длительность</td>
+                <td class="title center" style="width: 200px">Список сотрудников</td>
+                <td class="title center" style="width: 100px">Окончена</td>
+            </tr>
+            <tr class="my_row">
+                <td class="ordinary">{{ job.job.capitalize() }}</td>
+                <td class="ordinary">{{ names[job.team_leader][0] }} {{names[job.team_leader][1] }}</td>
+                <td class="ordinary center">{{ job.work_size }} часов</td>
+                <td class="ordinary center">{{ job.collaborators }}</td>
+                {% if job.is_finished %}
+                <td class="ordinary center">Окончена</td>
+                {% else %}
+                <td class="ordinary center" style="background-color: #ffeeff">Не окончена</td>
+                {% endif %}
+            </tr>
 
-    </table>
+        </table>
+    </div>
+    <br>
+    {% endfor %}
 </div>
-<br>
-{% endfor %}
-
 {% endblock %}
