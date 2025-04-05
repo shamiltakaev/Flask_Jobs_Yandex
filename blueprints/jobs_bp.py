@@ -1,10 +1,9 @@
 from flask import Blueprint, redirect, render_template
 
-from forms import AddJobForm
-
 from data import db_session
 from data.jobs import Jobs
 from data.users import User
+from data.forms import AddJobForm
 
 
 bp = Blueprint("jobs", __name__)

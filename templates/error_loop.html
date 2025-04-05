@@ -1,0 +1,5 @@
+{% macro render_errors(form_object) %}
+    {% for error in form_object.errors %}
+        <p class="alert alert-danger" role="alert">
+    {{ error }}
+{% endmacro %}

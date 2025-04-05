@@ -1,10 +1,10 @@
 from flask import Blueprint, redirect, render_template
 from flask_login import login_user, logout_user, login_required
 
-from forms import LoginForm, RegisterForm
 
 from data import db_session
 from data.users import User
+from data.forms import LoginForm, RegisterForm
 
 
 bp = Blueprint("users", __name__)
