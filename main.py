@@ -4,8 +4,9 @@ from flask_restful import Api
 
 from data import db_session
 from data.users import User
-import data.jobs_resources as jobs_resources
-import data.user_resources as user_resources
+
+import data.resources.jobs as jobs_resources
+import data.resources.users as user_resources
 
 from blueprints.users_bp import bp as users_bp
 from blueprints.jobs_bp import bp as jobs_bp
@@ -18,11 +19,11 @@ app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 api = Api(app)
 
-api.add_resource(jobs_resources.JobsListResource, '/api/v2/jobs')
-api.add_resource(jobs_resources.JobsResource, '/api/v2/jobs/<int:job_id>')
+api.add_resource(jobs_resources.JobsListResource, '/api/jobs')
+api.add_resource(jobs_resources.JobsResource, '/api/jobs/<int:job_id>')
 
-api.add_resource(user_resources.UsersListResource, '/api/v2/users')
-api.add_resource(user_resources.UserResource, '/api/v2/users/<int:user_id>')
+api.add_resource(user_resources.UsersListResource, '/api/users')
+api.add_resource(user_resources.UserResource, '/api/users/<int:user_id>')
 
 
 login_manager = LoginManager()
