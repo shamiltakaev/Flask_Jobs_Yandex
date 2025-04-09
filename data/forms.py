@@ -2,11 +2,11 @@ from flask_wtf import FlaskForm
 
 from wtforms import (PasswordField, BooleanField, SubmitField,
                      EmailField, StringField, IntegerField)
-from wtforms.validators import DataRequired, Email, EqualTo
+from wtforms.validators import DataRequired, EqualTo
 
 
 class LoginForm(FlaskForm):
-    email = EmailField('Email', validators=[DataRequired(), Email()])
+    email = EmailField('Email', validators=[DataRequired()])
     password = PasswordField('Пароль', validators=[DataRequired()])
     remember_me = BooleanField('Запомнить меня')
     submit = SubmitField('Вход')
